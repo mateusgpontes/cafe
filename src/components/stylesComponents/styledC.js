@@ -1,8 +1,8 @@
 import Styled from "styled-components";
 
 export const Img = Styled.img `
-    height:500px;
-    width:500px;
+    height:${props => `${props.height}px`};
+    width:${props => `${props.width}px`};
 `;
 
 export const Text = Styled.h2 `

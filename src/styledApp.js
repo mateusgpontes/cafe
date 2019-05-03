@@ -5,4 +5,5 @@ export const Div = Styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: black;
 `
