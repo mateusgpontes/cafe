@@ -20,7 +20,7 @@ const AddEnergia = () => {
             setImage1(coffee2);
             setImage2(coffee3);
             setEnergia(energia - 10);
-        }
+        }   
     }
 
     return(
