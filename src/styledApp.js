@@ -6,4 +6,4 @@ export const Div = Styled.div`
     align-items: center;
     text-align: center;
     background-color: black;
-`
+`;

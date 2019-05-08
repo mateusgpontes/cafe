@@ -1,35 +1,38 @@
-import React, {useState, useEffect} from "react";
-import coffee1 from "../imagens/coffe.gif";
-import coffee2 from "../imagens/coffee.gif";
-import coffee3 from "../imagens/coffeee.gif";
-import  {Img, Text} from "./stylesComponents/styledC";
+import React from "react";
+import { Img, Text } from "./stylesComponents/styledC";
+import { useActions, useStore } from "easy-peasy";
 
 const AddEnergia = () => {
+  const { energia, image1, image2 } = useStore(state => {
+    return state.jogoState;
+  });
 
-    const [energia, setEnergia] = useState(0);
-    const [image1, setImage1] = useState(coffee1);
-    const [image2, setImage2] = useState(coffee2);
+  const { incrementEnergia, trocaImg, energiaSec1 } = useActions(actions => {
+    return actions.jogoState;
+  });
 
-    function energiaPontos (){
-        setEnergia(energia + 1);
-
-    }
-
-    function coffeTroca (){
-        if(energia >= 10){
-            setImage1(coffee2);
-            setImage2(coffee3);
-            setEnergia(energia - 10);
-        }   
-    }
-
-    return(
-        <>  
-            <Img height={"300"} width={"300"} src={image1} onClick= {() => energiaPontos()}></Img>
-            <Img height={"100"} width={"100"} src={image2} onClick = {() => coffeTroca ()}></Img>
-            <Text fontFamily={'Arial'}>Energia:{energia}</Text>    
-        </>
-    );
-}
+  return (
+    <>
+      <Img
+        height={"300"}
+        width={"300"}
+        src={image1}
+        onClick={() => incrementEnergia(1)}
+      />
+      <p>Vale: {}</p>
+      <Img
+        height={"100"}
+        width={"100"}
+        src={image2}
+        onClick={() => {
+          trocaImg().then(() => {
+            energiaSec1();
+          });
+        }}
+      />
+      <Text fontFamily={"Arial"}>Energia: {energia}</Text>
+    </>
+  );
+};
 
 export default AddEnergia;
